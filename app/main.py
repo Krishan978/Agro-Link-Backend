@@ -16,10 +16,14 @@ origins = [
 # CORS Setup for secure cross-origin resource access
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins, 
+    allow_origins=["https://agro-link-fqzf-rcytpnece-krishan2001.vercel.app"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+    # allow_origins=origins, 
+    # allow_credentials=True,
+    # allow_methods=["*"],
+    # allow_headers=["*"],
 )
 
 app.include_router(products.router)
