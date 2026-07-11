@@ -4,6 +4,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.config import settings
 from app.routers import products, forecast
+from fastapi import Request
 
 app = FastAPI(title=settings.PROJECT_NAME, version="1.0.0")
 
@@ -27,6 +28,10 @@ app.include_router(forecast.router)
 @app.get("/health")
 async def health_check():
     return {"status": "ok"}
+
+@app.api_route("/", methods=["GET", "OPTIONS"])
+async def root():
+    return {"status": "online", "system": "AgroLink AI Enterprise Engine Gateway"}
 
 @app.get("/")
 async def root():
