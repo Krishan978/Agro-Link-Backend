@@ -24,6 +24,10 @@ app.add_middleware(
 app.include_router(products.router)
 app.include_router(forecast.router)
 
+@app.get("/health")
+async def health_check():
+    return {"status": "ok"}
+
 @app.get("/")
 async def root():
     return {"status": "online", "system": "AgroLink AI Enterprise Engine Gateway"}
